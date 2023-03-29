@@ -1,11 +1,11 @@
 pipeline {
 agentany
 stages {
-stage('build)
+stage('build')
 {
 steps {
 sh 'printenv'
-sh docker build -t Docker .
+sh 'docker build -t Docker .'
 }
 }
 }
