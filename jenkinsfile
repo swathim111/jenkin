@@ -10,7 +10,7 @@ stage('ecrlogin'){
 steps{
 withCredentials([[
     $class: 'AmazonWebServicesCredentialsBinding',
-    credentialsId: "AKIAU67L7VHXVVSY4AH3",
+    credentialsId: "AKIAU67L7VHXVVSY4AH3(aws)",
     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
 ]]) 
