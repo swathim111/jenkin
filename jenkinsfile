@@ -1,0 +1,14 @@
+pipeline {
+agentany
+stages {
+stage('build)
+{
+steps {
+sh 'printenv'
+sh docker build -t Docker .
+}
+}
+}
+}
+
+
