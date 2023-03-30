@@ -25,3 +25,8 @@ sh 'docker push public.ecr.aws/o4p0t3e5/ecr1:latest'
 }
 }
 }
+
+
+
+
+
