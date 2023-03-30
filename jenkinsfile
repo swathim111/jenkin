@@ -16,7 +16,7 @@ withCredentials([[
 ]]) 
 
 {
-sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o4p0t3e5'
+sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 341407934959.dkr.ecr.eu-west-1.amazonaws.com'
 sh 'docker build -t ecr1 .'
 sh 'docker tag ecr1:latest public.ecr.aws/o4p0t3e5/ecr1:latest'
 sh 'docker push public.ecr.aws/o4p0t3e5/ecr1:latest'
