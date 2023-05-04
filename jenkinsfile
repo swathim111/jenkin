@@ -1,32 +1,13 @@
-pipeline{
-agent any
-stages{
-stage('Build'){
-steps{
-sh 'printenv'
+node {
+stage('git checkout') {
+git branch: 'main', credentialsId: 'git', url: 'https://github.com/swathim111/jenkin.git' 
 }
-}
-stage('ecrlogin'){
-steps{
-withCredentials([[
-    $class: 'AmazonWebServicesCredentialsBinding',
-    credentialsId:"aws1",
-    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-]]) 
-
-{
-sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 341407934959.dkr.ecr.eu-west-1.amazonaws.com'
-sh 'docker build -t ecr2 .'
-sh 'docker tag ecr2:latest 341407934959.dkr.ecr.eu-west-1.amazonaws.com/ecr2:latest'
-sh 'docker push 341407934959.dkr.ecr.eu-west-1.amazonaws.com/ecr2:latest'
+stage('sonar qube') {
+withSonarQubeEnv(credentialsId: 'sonarid') {
+sh 'mvn clean package sonar:sonar'
 }
 }
 }
-}
-}
-
-
 
 
 
