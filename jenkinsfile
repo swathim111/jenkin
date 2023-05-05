@@ -6,6 +6,12 @@ stage('test') {
 sh 'mvn test'
 }
 stage('clean') {
-sh 'mvn clean package'
+sh 'mvn clean install'
 }
+stage('code analysis') {
+withSonarQubeEnv(credentialsId: 'sonarid') {
+sh "mvn clean package sonar:sonar"
+}
+}
+
 }
