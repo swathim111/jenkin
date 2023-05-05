@@ -1,6 +1,6 @@
 node {
 stage('git checkout') {
-git branch: 'main', credentialsId: 'git', url: 'https://github.com/swathim111/jenkin.git' 
+git branch: 'develop', credentialsId: 'git', url: 'https://github.com/swathim111/jenkin.git' 
 }
 stage('test') {
 sh 'mvn test'
