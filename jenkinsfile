@@ -5,4 +5,7 @@ git branch: 'develop', credentialsId: 'git', url: 'https://github.com/swathim111
 stage('test') {
 sh 'mvn test'
 }
+stage('integration test') {
+sh 'mvn verify -DskipunitTests'
+}
 }
